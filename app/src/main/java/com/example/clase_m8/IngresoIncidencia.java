@@ -50,13 +50,13 @@ public class IngresoIncidencia extends Fragment {
                 String get_spinner=spinner.getSelectedItem().toString();
                 //creamos la incidencia
                 Incidencia miincidencia=new Incidencia(get_info_incidencia,get_spinner);
-                Toast.makeText(getContext(),"ingresado",Toast.LENGTH_SHORT).show();
 
-                IncidenciaBDHelper dbhelper=((MainActivity)getActivity()).dbhelper;
-                SQLiteDatabase db=((MainActivity)getActivity()).db;
+
+                IncidenciaBDHelper dbhelper=((Menu_principal)getActivity()).dbhelper;
+                SQLiteDatabase db=((Menu_principal)getActivity()).db;
 
                 dbhelper.insertIncidencia(db,miincidencia);
-
+                Toast.makeText(getContext(),"ingresado",Toast.LENGTH_SHORT).show();
             }
         });
 
