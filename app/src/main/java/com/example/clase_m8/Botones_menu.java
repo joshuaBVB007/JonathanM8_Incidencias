@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,18 +39,18 @@ public class Botones_menu extends Fragment {
         B1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Añadir incidencia", Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(getContext(),IngresoIncidencia.class);
-                startActivity(i);
+                Fragment vista= new IngresoIncidencia();
+                FragmentManager mimanejador=getFragmentManager();
+                FragmentTransaction mitransaccion=mimanejador.beginTransaction();
+                mitransaccion.replace(R.id.contenedor,vista);
+                mitransaccion.commit();
             }
         });
 
         B2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Listar Incidencia", Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(getContext(),anadir_Incidencia.class);
-                startActivity(i);
+
             }
         });
 

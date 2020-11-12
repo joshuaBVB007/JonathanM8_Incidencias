@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,10 +43,8 @@ public class IngresoIncidencia extends Fragment {
         Boton_incidencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String contenido=info_incidencia.getText().toString();
-                String nivel=spinner.getSelectedItem().toString();
-                //Incidencia objeto=new Incidencia(contenido,nivel);
-                Toast.makeText(getContext(),"ingresado",Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
