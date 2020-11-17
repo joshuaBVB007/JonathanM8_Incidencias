@@ -50,14 +50,22 @@ public class Botones_menu extends Fragment {
         B2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Listar Incidencia", Toast.LENGTH_SHORT).show();
+                Fragment vista= new ListarIncidencias();
+                FragmentManager mimanejador=getFragmentManager();
+                FragmentTransaction mitransaccion=mimanejador.beginTransaction();
+                mitransaccion.replace(R.id.contenedor,vista);
+                mitransaccion.commit();
             }
         });
 
         B3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Eliminar Incidencia", Toast.LENGTH_SHORT).show();
+                Fragment vista= new Eliminar_Incidencias();
+                FragmentManager mimanejador=getFragmentManager();
+                FragmentTransaction mitransaccion=mimanejador.beginTransaction();
+                mitransaccion.replace(R.id.contenedor,vista);
+                mitransaccion.commit();
             }
         });
 

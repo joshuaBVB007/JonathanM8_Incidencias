@@ -2,6 +2,7 @@ package com.example.clase_m8.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -11,6 +12,8 @@ import androidx.annotation.Nullable;
 
 import com.example.clase_m8.Recursos.Incidencia;
 import com.example.clase_m8.db.IncidenciaContract.*;
+
+import java.util.ArrayList;
 
 public class IncidenciaBDHelper extends SQLiteOpenHelper {
 
@@ -35,18 +38,37 @@ public class IncidenciaBDHelper extends SQLiteOpenHelper {
     public void insertIncidencia(SQLiteDatabase db, Incidencia miincidencia) {
         if(db.isOpen()){
             ContentValues values=new ContentValues();
-
             values.put(IncidenciaEntry.TABLE_NAME_TITLE,miincidencia.getContenido());
-
             try {
                 db.insert(IncidenciaEntry.TABLE_NAME,null,values);
             }catch (SQLException e){
                 Log.i("prova","insert ko");
             }
-
         }else{
             Log.i("prova","database is closed");
         }
+    }
+
+    public static ArrayList<Incidencia> getAllIncidencies(SQLiteDatabase db){
+        ArrayList<Incidencia> listIncidencies = new ArrayList<Incidencia>();
+        //Selection all registers from the table Incidencia using Cursor
+        Cursor cursor = db.query(IncidenciaEntry.TABLE_NAME,null,null,null,null,null,null);
+        //Iteration on the cursor results and fill the array
+        while (cursor.moveToNext()) {
+            String inc = cursor.getString(cursor.getColumnIndex(IncidenciaEntry.TABLE_NAME_TITLE));
+            Incidencia incidencia = new Incidencia(inc, "alta");
+            listIncidencies.add(incidencia);
+        }
+        cursor.close();
+        return listIncidencies;
+    }
+
+    public void eliminarIncidencias(SQLiteDatabase db, SQLiteOpenHelper helper) {
+        db = helper.getWritableDatabase();
+        db.delete(IncidenciaEntry.TABLE_NAME,null,null);
+
 
     }
+
+
 }
