@@ -1,12 +1,14 @@
 package com.example.clase_m8;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clase_m8.Recursos.Incidencia;
@@ -30,11 +32,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.t1.setText(lista.get(position).getContenido());
-        holder.t2.setText(lista.get(position).getPrioridad());
-        holder.t3.setText(lista.get(position).dimeFecha());
-        holder.t4.setText(lista.get(position).getDesc());
+    public void onBindViewHolder(@NonNull final MyViewHolder holder,  int position) {
+        holder.titulo_Incidencia.setText(lista.get(position).getContenido());
+        holder.contenido_Incidencia.setText(lista.get(position).getPrioridad());
+        holder.fecha_Incidencia.setText(lista.get(position).dimeFecha());
+        holder.descripcion_Incidencia.setText(lista.get(position).getDesc());
+        final int id=position;
+        holder.contenido_Incidencia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                Vista_Enfocada muestra = new Vista_Enfocada();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("ITEM_TITLE", lista.get(id).getContenido());
+                bundle.putString("ITEM_PRIO", lista.get(id).getPrioridad());
+                bundle.putString("ITEM_DESC", lista.get(id).getDesc());
+                bundle.putString("ITEM_DATE", lista.get(id).dimeFecha());
+                bundle.putString("ITEM_STATE", lista.get(id).getEstado());
+
+                muestra.setArguments(bundle);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, muestra).addToBackStack(null).commit();
+            }
+        });
+
     }
 
     @Override
@@ -43,19 +64,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView t1;
-        TextView t2;
-        TextView t3;
-        TextView t4;
+        TextView titulo_Incidencia;
+        TextView contenido_Incidencia;
+        TextView fecha_Incidencia;
+        TextView descripcion_Incidencia;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-           t1=itemView.findViewById(R.id.tv1);
-           t2=itemView.findViewById(R.id.tv2);
-           t3=itemView.findViewById(R.id.tv3_fecha);
-           t4=itemView.findViewById(R.id.tv4);
+           titulo_Incidencia =itemView.findViewById(R.id.titulo);
+           contenido_Incidencia =itemView.findViewById(R.id.contenido);
+           fecha_Incidencia =itemView.findViewById(R.id.fecha);
+           descripcion_Incidencia =itemView.findViewById(R.id.descripcion);
         }
     }
-
-
 
 }

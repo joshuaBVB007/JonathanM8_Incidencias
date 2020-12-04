@@ -24,7 +24,8 @@ public class IncidenciaBDHelper extends SQLiteOpenHelper {
             IncidenciaEntry.TABLE_NAME_TITLE+" TEXT,"+
             IncidenciaEntry.TABLE_NAME_PRIORITY+" TEXT,"+
             IncidenciaEntry.TABLE_NAME_DATE + " TEXT,"+
-            IncidenciaEntry.TABLE_NAME_DESCRIPTION + " TEXT)";
+            IncidenciaEntry.TABLE_NAME_DESCRIPTION + " TEXT," +
+            IncidenciaEntry.TABLE_NAME_STATE+" TEXT)";
 
 
 
@@ -49,6 +50,7 @@ public class IncidenciaBDHelper extends SQLiteOpenHelper {
             contenido.put(IncidenciaEntry.TABLE_NAME_PRIORITY,miincidencia.getPrioridad());
             contenido.put(IncidenciaEntry.TABLE_NAME_DATE,miincidencia.getFecha());
             contenido.put(IncidenciaEntry.TABLE_NAME_DESCRIPTION,miincidencia.getDesc());
+            contenido.put(IncidenciaEntry.TABLE_NAME_STATE,miincidencia.getEstado());
             try {
                 db.insert(IncidenciaEntry.TABLE_NAME,null,contenido);
             }catch (SQLException e){
@@ -72,6 +74,7 @@ public class IncidenciaBDHelper extends SQLiteOpenHelper {
                 Incidencia incidencia = new Incidencia(cursor.getString(1),cursor.getString(2),cursor.getString(4));
                //una gilipollés que hice
                 incidencia.setFecha(cursor.getLong(3));
+                incidencia.setEstado(cursor.getInt(5));
                 listIncidencies.add(incidencia);
             }
         }

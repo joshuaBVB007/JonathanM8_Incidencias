@@ -13,6 +13,7 @@ public class Incidencia {
     public String prioridad;
     public String desc;
     public long fecha;
+    public int estado;
 
 
     public Incidencia(String contenido, String prioridad,String desc) {
@@ -63,6 +64,16 @@ public class Incidencia {
         String dateString = DateFormat.format("MM/dd/yyyy HH:mm:ss", new Date(fecha)).toString();
 
         return dateString;
+    }
+
+
+    public String getEstado() {
+        String dato=String.valueOf(estado);
+        return dato;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
 

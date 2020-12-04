@@ -8,6 +8,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:radius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -20,57 +21,55 @@
             android:background="@android:color/holo_red_dark">
 
             <TextView
-                android:id="@+id/tv4"
+                android:id="@+id/descripcion"
                 android:layout_width="300dp"
                 android:layout_height="30dp"
+                android:gravity="center_horizontal"
                 android:text="TextView"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.531"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv2"
-                android:gravity="center_horizontal" />
+                app:layout_constraintTop_toBottomOf="@+id/contenido" />
 
             <TextView
-                android:id="@+id/tv3_fecha"
+                android:id="@+id/fecha"
                 android:layout_width="300dp"
                 android:layout_height="30dp"
-                android:layout_marginBottom="4dp"
+                android:gravity="center_horizontal"
                 android:text="TextView"
                 android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.531"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv4"
-                app:layout_constraintVertical_bias="0.0"
-                android:gravity="center_horizontal" />
+                app:layout_constraintTop_toBottomOf="@+id/descripcion" />
 
             <TextView
-                android:id="@+id/tv2"
+                android:id="@+id/contenido"
                 android:layout_width="300dp"
                 android:layout_height="30dp"
+                android:gravity="center_horizontal"
                 android:text="TextView"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_light_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.531"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv1"
-                android:gravity="center_horizontal" />
+                app:layout_constraintTop_toBottomOf="@+id/titulo" />
 
             <TextView
-                android:id="@+id/tv1"
+                android:id="@+id/titulo"
                 android:layout_width="300dp"
                 android:layout_height="30dp"
+                android:gravity="center_horizontal"
                 android:text="TextView"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_light_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.533"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:gravity="center_horizontal" />
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

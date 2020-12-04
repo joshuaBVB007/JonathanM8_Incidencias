@@ -58,6 +58,7 @@ public class IngresoIncidencia extends Fragment {
                 Incidencia miincidencia=new Incidencia(get_info_incidencia,get_spinner,get_Desc_incidencia);
                 //ESTABLECEMOS LA PROPIEDAD FECHA ABAJO DEL OBJETO INCIDENCIA
                 miincidencia.setFecha(System.currentTimeMillis() / 1000);
+                miincidencia.setEstado(0);
 
                 IncidenciaBDHelper dbhelper=((Menu_principal)getActivity()).dbhelper;
                 SQLiteDatabase db=((Menu_principal)getActivity()).db;
