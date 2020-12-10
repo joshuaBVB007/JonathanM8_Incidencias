@@ -89,7 +89,8 @@ public class Vista_Enfocada extends Fragment {
                 }
             });
 
-        del_Incidencia.setOnClickListener(new View.OnClickListener() {
+        del_Incidencia.setOnClickListener(
+                new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mostrardialogo();

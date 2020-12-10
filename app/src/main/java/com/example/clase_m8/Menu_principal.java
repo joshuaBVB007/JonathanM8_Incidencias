@@ -25,24 +25,4 @@ public class Menu_principal extends AppCompatActivity {
         db=dbhelper.getWritableDatabase();
 
     }
-
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.con_expecificas,menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id=item.getItemId();
-
-        if(id==R.id.Altas){
-            Toast.makeText(this,"Altas",Toast.LENGTH_SHORT).show();
-        }else if(id==R.id.Medias){
-            Toast.makeText(this,"Medias",Toast.LENGTH_SHORT).show();
-        }else if(id==R.id.Bajas){
-            Toast.makeText(this,"Bajas",Toast.LENGTH_SHORT).show();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
 }
